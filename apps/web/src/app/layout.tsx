@@ -2,7 +2,8 @@ import "./globals.css";
 import "@repo/ui/styles.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-
+import dynamic from "next/dynamic";
+const Navigation = dynamic(() => import('./components/Navbar'), { ssr: false })
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -17,6 +18,7 @@ export default function RootLayout({
 }): JSX.Element {
   return (
     <html lang="en">
+      <Navigation />
       <body className={inter.className}>{children}</body>
     </html>
   );
